@@ -104,7 +104,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 semanticContainer: true,
                 clipBehavior: Clip.antiAliasWithSaveLayer,
                 margin: const EdgeInsets.only(
-                    top: 100, left: 10, right: 10, bottom: 70),
+                    top: 100, left: 10, right: 10, bottom: 50),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20.0),
                 ),
@@ -149,19 +149,35 @@ class _HomeScreenState extends State<HomeScreen> {
                       padding: const EdgeInsets.only(left: 15.0, top: 20),
                       child: Text(product.brand),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 15.0, top: 07),
-                      child: Text(
-                        product.category,
-                        style: const TextStyle(color: Colors.white60),
-                      ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(left: 15.0, top: 07),
+                          child: Text(
+                            product.category,
+                            style: const TextStyle(color: Colors.white60),
+                          ),
+                        ),
+                        Text.rich(TextSpan(children: [
+                          TextSpan(
+                              text: '${product.rating.toStringAsFixed(2)} ',
+                              style:
+                                  const TextStyle(fontWeight: FontWeight.w600)),
+                          const TextSpan(
+                              text: ' ★★★★★',
+                              style: TextStyle(
+                                color: Colors.amber,
+                              )),
+                        ]))
+                      ],
                     ),
                     const SizedBox(height: 20),
                     ListTile(
                       title: Text(
                         product.title,
                         style: const TextStyle(
-                            fontWeight: FontWeight.w800, fontSize: 30),
+                            fontWeight: FontWeight.w800, fontSize: 25),
                       ),
                       subtitle: Text(
                         product.description,
@@ -178,7 +194,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     const SizedBox(height: 30),
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         Text(
                           ' Discount :  ${product.discountPercentage.toStringAsFixed(2)} %',
@@ -189,18 +205,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           '       Stock : ${product.stock.toString()}',
                           style: const TextStyle(fontWeight: FontWeight.w600),
                         ),
-                        const SizedBox(width: 40),
-                        Text.rich(TextSpan(children: [
-                          TextSpan(
-                              text: '${product.rating.toStringAsFixed(2)} ',
-                              style:
-                                  const TextStyle(fontWeight: FontWeight.w600)),
-                          const TextSpan(
-                              text: ' ★★★★★',
-                              style: TextStyle(
-                                color: Colors.amber,
-                              )),
-                        ]))
+                        const SizedBox(width: 20),
                       ],
                     ),
                   ],

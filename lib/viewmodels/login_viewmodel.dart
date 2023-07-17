@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 import '../views/HomeScreen/home_screen.dart';
 
@@ -53,6 +54,14 @@ class LoginViewModel extends ChangeNotifier {
         context,
         MaterialPageRoute(builder: (context) => HomeScreen()),
       );
+      Fluttertoast.showToast(
+          msg: "Login successfull",
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.BOTTOM,
+          timeInSecForIosWeb: 1,
+          backgroundColor: Colors.green,
+          textColor: Colors.white,
+          fontSize: 16.0);
     }
   }
 }
